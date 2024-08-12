@@ -1,3 +1,4 @@
+//#1
 async function connectMetamask() {
     // Проверяем, доступен ли Metamask
     if (window.ethereum) {
@@ -14,14 +15,15 @@ async function connectMetamask() {
     }
 }
 
-// Привязываем функцию к кнопке
 document.getElementById('connectButton').addEventListener('click', connectMetamask);
+//#1
 
+//#2
 async function generateSHA256Hash(message) {
-    const msgBuffer = new TextEncoder().encode(message);   // Преобразуем сообщение в массив байтов
-    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);  // Вычисляем хэш
-    const hashArray = Array.from(new Uint8Array(hashBuffer));  // Преобразуем буфер в массив байтов
-    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');  // Преобразуем байты в шестнадцатеричную строку
+    const msgBuffer = new TextEncoder().encode(message);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer); 
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
     return hashHex;
 }
 
@@ -34,7 +36,9 @@ document.getElementById('generateHashButton').addEventListener('click', async ()
     else alert('Teaxtaera empty')
 
 });
+//#2
 
+//#3
 const apssBlock = document.querySelector('.apps');
 const iframe = document.querySelector('iframe');
 
@@ -64,13 +68,12 @@ function panel(apps) {
         let wrapApp = document.createElement('div');
         wrapApp.classList.add('wrap-app');
         wrapApp.innerHTML = app.name;
-        console.log(wrapApp)
+      
         contain.appendChild(wrapApp);
         wrapApp.addEventListener('click', () => {
             loadSite(app.url);
         });
         if (i === apps.length - 1) {
-            console.log(contain)
             apssBlock.appendChild(contain);
         }
     }
@@ -78,12 +81,11 @@ function panel(apps) {
 
 
 function loadSite(url) {
-    console.log(1)
     iframe.src = url;
 }
 
-
 panel(apps)
+//#3
 
 
 //#4
@@ -156,5 +158,5 @@ loadPanelBtn.addEventListener('click', () => {
             console.error('Error loading JSON:', error);
         });
 })
-
 //#6
+
