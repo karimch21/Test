@@ -27,11 +27,60 @@ async function generateSHA256Hash(message) {
 
 document.getElementById('generateHashButton').addEventListener('click', async () => {
     const textInput = document.getElementById('shaText').value;
-    if(textInput.split('').length > 0){
+    if (textInput.split('').length > 0) {
         const hash = await generateSHA256Hash(textInput);
         document.getElementById('output').innerText = `sha256 Hash: ${hash}`;
     }
     else alert('Teaxtaera empty')
-    
+
 });
 
+const apssBlock = document.querySelector('.apps');
+const iframe = document.querySelector('iframe');
+
+const apps = [
+    {
+        name: 'uniswap',
+        url: 'https://app.uniswap.org/'
+    },
+    {
+        name: '1inch',
+        url: 'https://app.1inch.io/'
+    },
+    {
+        name: 'denet',
+        url: 'https://bugs.denet.pro/'
+    },
+    {
+        name: 'revert',
+        url: 'https://revert.finance/'
+    }
+]
+
+function panel(apps) {
+    let contain = document.createDocumentFragment();
+    for (let i = 0; i <= apps.length - 1; i++) {
+        let app = apps[i];
+        let wrapApp = document.createElement('div');
+        wrapApp.classList.add('wrap-app');
+        wrapApp.innerHTML = app.name;
+        console.log(wrapApp)
+        contain.appendChild(wrapApp);
+        wrapApp.addEventListener('click', ()=>{
+            loadSite(app.url);
+        });
+        if(i === apps.length - 1){
+            console.log(contain)
+            apssBlock.appendChild(contain);
+        }
+    }
+}
+
+
+function loadSite(url){
+    console.log(1)
+    iframe.src = url;
+}
+
+
+panel(apps)
