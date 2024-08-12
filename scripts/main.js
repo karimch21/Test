@@ -92,16 +92,46 @@ const aesKey = document.querySelector('.aes-key');
 const aesOutput = document.querySelector('.aes-output');
 const aesBtn = document.querySelector('.aes-encrypt-btn');
 
+
 aesBtn.addEventListener('click', encrypt)
 function encrypt() {
-    
+    if (aesInput.value === '') {
+        alert('Введите значение для шифровки');
+        return false
+    }
     if (aesKey.value === '') {
         aesKey.value = 1234567890123456;
     }
-    if (aesInput.value === ''){
-        alert('Введите значение');
+    const keyShablon = CryptoJS.enc.Utf8.parse(aesKey.value);
+    if (keyShablon.sigBytes !== 16 && keyShablon.sigBytes !== 24 && keyShablon.sigBytes !== 32) {
+        alert('Введите корректное значение ключа');
         return false
     }
     const encrypted = CryptoJS.AES.encrypt(aesInput.value, aesKey.value).toString();
     aesOutput.textContent = encrypted
 }
+//#4
+
+//#5
+const aesInputDecrypt = document.querySelector('.aes-input-decrypt');
+const aesKeyDecrypt = document.querySelector('.aes-key-decrypt');
+const aesOutputDecrypt = document.querySelector('.aes-decrypt-output');
+const aesBtnDecrypt = document.querySelector('.aes-decrypt-btn');
+
+aesBtnDecrypt.addEventListener('click', decrypt)
+function decrypt() {
+
+    if (aesKeyDecrypt.value === '') {
+        aesKeyDecrypt.value = 1234567890123456;
+    }
+    const keyShablon = CryptoJS.enc.Utf8.parse(aesKeyDecrypt.value);
+
+    if (keyShablon.sigBytes !== 16 && keyShablon.sigBytes !== 24 && keyShablon.sigBytes !== 32) {
+        alert('Введите корректное значение ключа');
+        return false
+    }
+
+    const decrypted = (CryptoJS.AES.decrypt(aesInputDecrypt.value, aesKeyDecrypt.value)).toString(CryptoJS.enc.Utf8);
+    aesOutputDecrypt.textContent = decrypted
+}
+//#5
