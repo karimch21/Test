@@ -135,3 +135,26 @@ function decrypt() {
     aesOutputDecrypt.textContent = decrypted
 }
 //#5
+
+//#6
+const loadPanelBtn = document.querySelector('.load-panel-btn');
+const appsPanel = document.querySelector('.apps-panel');
+
+loadPanelBtn.addEventListener('click', () => {
+    appsPanel.innerHTML = '';
+    fetch('./scripts/apps.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            panel(data.apps)
+        })
+        .catch(error => {
+            console.error('Error loading JSON:', error);
+        });
+})
+
+//#6

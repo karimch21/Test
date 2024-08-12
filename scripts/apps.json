@@ -1,0 +1,20 @@
+{
+    "apps": [
+        {
+            "name": "Uniswap",
+            "url": "https://app.uniswap.org/"
+        },
+        {
+            "name": "1inch",
+            "url": "https://app.1inch.io/"
+        },
+        {
+            "name": "DeNet Bugs",
+            "url": "https://bugs.denet.pro/"
+        },
+        {
+            "name": "Revert Finance",
+            "url": "https://revert.finance/"
+        }
+    ]
+}
