@@ -66,10 +66,10 @@ function panel(apps) {
         wrapApp.innerHTML = app.name;
         console.log(wrapApp)
         contain.appendChild(wrapApp);
-        wrapApp.addEventListener('click', ()=>{
+        wrapApp.addEventListener('click', () => {
             loadSite(app.url);
         });
-        if(i === apps.length - 1){
+        if (i === apps.length - 1) {
             console.log(contain)
             apssBlock.appendChild(contain);
         }
@@ -77,10 +77,31 @@ function panel(apps) {
 }
 
 
-function loadSite(url){
+function loadSite(url) {
     console.log(1)
     iframe.src = url;
 }
 
 
 panel(apps)
+
+
+//#4
+const aesInput = document.querySelector('.aes-input');
+const aesKey = document.querySelector('.aes-key');
+const aesOutput = document.querySelector('.aes-output');
+const aesBtn = document.querySelector('.aes-encrypt-btn');
+
+aesBtn.addEventListener('click', encrypt)
+function encrypt() {
+    
+    if (aesKey.value === '') {
+        aesKey.value = 1234567890123456;
+    }
+    if (aesInput.value === ''){
+        alert('Введите значение');
+        return false
+    }
+    const encrypted = CryptoJS.AES.encrypt(aesInput.value, aesKey.value).toString();
+    aesOutput.textContent = encrypted
+}

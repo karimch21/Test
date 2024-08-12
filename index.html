@@ -1,21 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
     <title>Document</title>
 </head>
+
 <body>
     <button id="connectButton">Connect Metamask</button>
     <p id="accountAddress"></p>
     <textarea id="shaText" rows="10" cols="10" placeholder="Введите"></textarea>
-   
+
     <button id="generateHashButton">Generate Hash</button>
     <p id="output"></p>
 
     <div class="apps"></div>
     <iframe src="" frameborder="0"></iframe>
+
+    <section>
+        <hr>
+        <h2>Task #4</h2>
+        <textarea name="" id="" class="aes-input" placeholder="Text" value="Hello, World!"></textarea>
+        <div>
+            <input type="text" class="aes-key" placeholder="key">
+        </div>
+        <div>
+            <button class="aes-encrypt-btn">Encrypt</button>
+        </div>
+        <div class="aes-output"></div>
+        <hr>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <script src="./scripts/main.js"></script>
 </body>
+
 </html>
